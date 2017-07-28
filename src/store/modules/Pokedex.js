@@ -60,13 +60,11 @@ export default {
     },
     getPokemons: ({ commit }, page = '1') => {
       const offset = (+page - 1) * api.limit
-      commit(types.CHANGE_LOADING_STATUS, true, { root: true })
       return api
         .getPokemons(offset)
         .then(data => {
           commit(types.RECEIVE_DATA, data)
           commit(types.RECEIVE_POKEMONS, data.results)
-          commit(types.CHANGE_LOADING_STATUS, false, { root: true })
         })
     }
   }

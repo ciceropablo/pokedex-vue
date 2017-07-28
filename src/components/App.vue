@@ -20,15 +20,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-  name: 'App',
-  computed: {
-    ...mapGetters({
-      isLoading: 'isLoading'
-    })
-  }
+  name: 'App'
 }
 </script>
 

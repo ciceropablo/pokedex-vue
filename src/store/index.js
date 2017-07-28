@@ -2,34 +2,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Pokedex from './modules/pokedex'
 import Pokemon from './modules/pokemon'
-import * as types from './mutation-types'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   strict: true,
 
-  getters: {
-    isLoading: state => {
-      return state.isLoading
-    }
-  },
+  getters: {},
 
-  state: {
-    isLoading: false
-  },
+  state: {},
 
-  mutations: {
-    [types.CHANGE_LOADING_STATUS] (state, isLoading) {
-      state.isLoading = isLoading
-    }
-  },
+  mutations: {},
 
-  actions: {
-    setLoading: ({ commit }, status) => {
-      commit(types.CHANGE_LOADING_STATUS, status)
-    }
-  },
+  actions: {},
 
   modules: {
     namespaced: true,
