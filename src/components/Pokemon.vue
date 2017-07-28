@@ -18,6 +18,7 @@
 
 <script>
 import { mapGetters, mapState, mapActions } from 'vuex'
+import RouteCompMixins from '@/mixins/RouteCompMixins'
 import store from '@/store'
 
 const beforeRoute = (to, from, next) => {
@@ -33,9 +34,8 @@ const beforeRoute = (to, from, next) => {
     })
 }
 
-const beforeRouteLeave = (to, from, next) => next()
-
 export default {
+  mixins: [RouteCompMixins],
   name: 'Pokemon',
   computed: {
     ...mapState('route', {
@@ -48,24 +48,6 @@ export default {
   },
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
-  beforeRouteLeave: beforeRouteLeave,
-  created () {
-    this.$router.beforeEach((to, from, next) => {
-      if (to.meta && to.meta.progress) {
-        const progress = to.meta.progress
-        this.$Progress.parseMeta(progress)
-      }
-
-      this.$Progress.start()
-      next(() => {
-        this.$Progress.finish()
-      })
-    })
-
-    this.$router.afterEach(() => {
-      this.$Progress.finish()
-    })
-  },
   methods: {
     ...mapActions('Pokemon', {
       getPokemonByName: 'getPokemonByName'

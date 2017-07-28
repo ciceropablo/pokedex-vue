@@ -14,6 +14,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import PokemonList from '@/components/PokemonList'
 import Pagination from '@/components/Pagination'
+import RouteCompMixins from '@/mixins/RouteCompMixins'
 import store from '@/store'
 
 const beforeRoute = (to, from, next) => {
@@ -30,9 +31,8 @@ const beforeRoute = (to, from, next) => {
     })
 }
 
-const beforeRouteLeave = (to, from, next) => next()
-
 export default {
+  mixins: [RouteCompMixins],
   name: 'Pokedex',
   components: {
     PokemonList,
@@ -49,24 +49,6 @@ export default {
   },
   beforeRouteEnter: beforeRoute,
   beforeRouteUpdate: beforeRoute,
-  beforeRouteLeave: beforeRouteLeave,
-  created () {
-    this.$router.beforeEach((to, from, next) => {
-      if (to.meta && to.meta.progress) {
-        const progress = to.meta.progress
-        this.$Progress.parseMeta(progress)
-      }
-
-      this.$Progress.start()
-      next(() => {
-        this.$Progress.finish()
-      })
-    })
-
-    this.$router.afterEach(() => {
-      this.$Progress.finish()
-    })
-  },
   methods: {
     ...mapActions('Pokedex', {
       getPokemons: 'getPokemons'
