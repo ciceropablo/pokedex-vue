@@ -10,9 +10,7 @@ export default {
   },
 
   state: {
-    data: {
-      count: 0
-    },
+    count: 0,
     results: [],
     pagination: {
       current: 0,
@@ -26,8 +24,8 @@ export default {
   },
 
   mutations: {
-    [types.RECEIVE_DATA] (state, data) {
-      state.data = data
+    [types.RECEIVE_POKEMONS_COUNT] (state, count) {
+      state.count = count
     },
     [types.RECEIVE_POKEMONS] (state, results) {
       state.results = results
@@ -42,7 +40,7 @@ export default {
       const current = +page
       const limit = api.limit
       const offset = (current - 1) * limit
-      const count = state.data.count
+      const count = state.count
       const total = Math.ceil(count / limit)
       let prev = current - 1
       let next = current + 1
@@ -63,7 +61,7 @@ export default {
       return api
         .getPokemons(offset)
         .then(data => {
-          commit(types.RECEIVE_DATA, data)
+          commit(types.RECEIVE_POKEMONS_COUNT, data.count)
           commit(types.RECEIVE_POKEMONS, data.results)
         })
     }
