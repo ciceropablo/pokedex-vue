@@ -14,13 +14,14 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import PokemonList from '@/components/PokemonList'
 import Pagination from '@/components/Pagination'
-import RouteCompMixins from '@/mixins/RouteCompMixins'
 import store from '@/store'
 
 const beforeRoute = (to, from, next) => {
   const page = to.params.page
+  store._vm.$Progress.start()
   store.dispatch('Pokedex/getPokemons', page)
     .then(() => {
+      store._vm.$Progress.finish()
       next()
       store.dispatch('Pokedex/getPagination', page)
     }, error => {
@@ -32,7 +33,6 @@ const beforeRoute = (to, from, next) => {
 }
 
 export default {
-  mixins: [RouteCompMixins],
   name: 'Pokedex',
   components: {
     PokemonList,

@@ -18,13 +18,14 @@
 
 <script>
 import { mapGetters, mapState, mapActions } from 'vuex'
-import RouteCompMixins from '@/mixins/RouteCompMixins'
 import store from '@/store'
 
 const beforeRoute = (to, from, next) => {
   const name = to.params.name
+  store._vm.$Progress.start()
   store.dispatch('Pokemon/getPokemonByName', name)
     .then(() => {
+      store._vm.$Progress.finish()
       next()
     }, error => {
       if (error) {
@@ -35,7 +36,6 @@ const beforeRoute = (to, from, next) => {
 }
 
 export default {
-  mixins: [RouteCompMixins],
   name: 'Pokemon',
   computed: {
     ...mapState('route', {
