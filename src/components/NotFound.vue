@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found">
+  <div :class="$style.root">
     <h2>page not found</h2>
   </div>
 </template>
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.not-found {}
+<style module>
+.root {}
 </style>

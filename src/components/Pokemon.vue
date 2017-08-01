@@ -1,5 +1,5 @@
 <template>
-  <div class="pokemon">
+  <div :class="$style.root">
     <p>
       <a @click="onClickBackButton" href="">back</a>
     </p>
@@ -60,6 +60,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.pokemon {}
+<style module>
+.root {}
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <div class="pokemon-list">
-      <transition-group name="fade" tag="ul">
+    <div :class="$style.root">
+      <transition-group name="slide-fade" tag="ul">
         <li v-for="pokemon in pokemons" :key="pokemon.name">
           <PokemonListItem :pokemon="pokemon" />
         </li>
@@ -22,23 +22,9 @@ export default {
 }
 </script>
 
-<style scoped>
-.fade-enter-active {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.fade-leave-active {}
-
-.fade-enter {}
-
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.pokemon-list {}
-.pokemon-list ul li {
+<style module>
+.root {}
+.root ul li {
   transition: opacity 0.55s ease-in-out, transform 0.6s ease-out;
 }
 </style>

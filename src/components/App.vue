@@ -1,11 +1,11 @@
 <template>
   <transition
     appear
-    appear-class="appear-class"
-    appear-to-class="appear-to-class"
-    appear-active-class="appear-active-class"
+    appear-class="appear-in"
+    appear-to-class="appear-to-in"
+    appear-active-class="appear-active-in"
   >
-    <main id="app">
+    <main :class="$style.root">
       <header>
         <nav>
           <router-link :to="{ name: 'pokedex' }">pokedex</router-link>
@@ -25,28 +25,11 @@ export default {
 }
 </script>
 
-<style>
-.appear-class {
-  opacity: 0;
-}
-.appear-to-class {}
-.appear-active-class {
-  transition: opacity 0.7s ease-in-out;
-}
+<style module="gl">
+@import '../styles/shared/layout.css';
+@import '../styles/shared/animations.css';
+</style>
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.65s ease-in-out;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-body {
-  font-family: sans-serif;
-}
-
-#app {}
+<style module>
+.root {}
 </style>

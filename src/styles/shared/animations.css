@@ -1,0 +1,29 @@
+:global .appear-in {
+  opacity: 0;
+}
+:global .appear-to-in {}
+:global .appear-active-in {
+  transition: opacity 0.7s ease-in-out;
+}
+
+:global .fade-enter-active,
+:global .fade-leave-active {
+  transition: opacity 0.65s ease-in-out;
+}
+
+:global .fade-enter,
+:global .fade-leave-to {
+  opacity: 0;
+}
+
+:global .slide-fade-enter-active {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+:global .slide-fade-leave-active {}
+
+:global .slide-fade-enter {}
+:global .slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}

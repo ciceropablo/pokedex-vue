@@ -1,5 +1,5 @@
 <template>
-  <router-link class="pokemon-list-item" :to="{ name: 'pokemon', params: { name: pokemon.name }}">
+  <router-link :class="$style.root" :to="{ name: 'pokemon', params: { name: pokemon.name }}">
     {{ pokemon.name }}
   </router-link>
 </template>
@@ -13,6 +13,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.pokedex-list-item {}
+<style module>
+.root {}
 </style>

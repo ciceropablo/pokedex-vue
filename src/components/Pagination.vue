@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div :class="$style.root">
     <p>
       <router-link :to="prev.to">{{ prev.label }}</router-link>
       <span>&nbsp;{{ current }}/{{ total }}&nbsp;</span>
@@ -20,6 +20,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.pagination {}
+<style module>
+.root {}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pokedex">
+  <div :class="$style.root">
     <Pagination
       :prev="{ label: 'prev', to: { name: 'pokedex', params: { page: pagination.prev } } }"
       :next="{ label: 'next', to: { name: 'pokedex', params: { page: pagination.next } } }"
@@ -57,6 +57,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.pokedex {}
+<style module>
+.root {}
 </style>
