@@ -1,11 +1,11 @@
 <template>
-    <div :class="$style.root">
-      <transition-group name="slide-fade" tag="ul">
-        <li v-for="pokemon in pokemons" :key="pokemon.name">
-          <PokemonListItem :pokemon="pokemon" />
-        </li>
-      </transition-group>
-    </div>
+  <div :class="$style.root">
+    <transition-group name="slide-fade" tag="ul">
+      <li v-for="pokemon in pokemons" :key="pokemon.name">
+        <PokemonListItem :pokemon="pokemon" />
+      </li>
+    </transition-group>
+  </div>
 </template>
 
 <script>
