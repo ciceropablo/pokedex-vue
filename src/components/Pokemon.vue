@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.root">
     <p>
-      <a @click="onClickBackButton" href="">back</a>
+      <a @click.prevent="onClickBackButton" href="">back</a>
     </p>
     <table>
       <tr>
@@ -52,8 +52,7 @@ export default {
     ...mapActions('Pokemon', {
       getPokemonByName: 'getPokemonByName'
     }),
-    onClickBackButton (e) {
-      e.preventDefault()
+    onClickBackButton () {
       this.$router.go(-1)
     }
   }
