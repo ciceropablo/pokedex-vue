@@ -1,22 +1,23 @@
 <template>
-  <transition
-    appear
-    appear-class="appear-in"
-    appear-to-class="appear-to-in"
-    appear-active-class="appear-active-in"
-  >
-    <main :class="$style.root">
-      <header>
-        <nav>
-          <router-link :to="{ name: 'pokedex' }">pokedex</router-link>
-        </nav>
-      </header>
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
-      <vue-progress-bar></vue-progress-bar>
-    </main>
-  </transition>
+  <main :class="$style.root">
+    <transition
+      appear
+      appear-class="fade-enter"
+      appear-active-class="fade-enter-active"
+    >
+      <div>
+        <header>
+          <nav>
+            <router-link :to="{ name: 'pokedex' }">pokedex</router-link>
+          </nav>
+        </header>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </div>
+    </transition>
+    <vue-progress-bar></vue-progress-bar>
+  </main>
 </template>
 
 <script>

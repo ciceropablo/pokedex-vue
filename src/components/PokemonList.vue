@@ -24,7 +24,4 @@ export default {
 
 <style module>
 .root {}
-.root ul li {
-  transition: opacity 0.55s ease-in-out, transform 0.6s ease-out;
-}
 </style>
