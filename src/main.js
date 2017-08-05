@@ -11,9 +11,7 @@ sync(store, router)
 
 Vue.config.debug = true
 Vue.config.productionTip = false
-Vue.config.errorHandler = () => {
-  // airbrake or sentry integration
-}
+Vue.config.errorHandler = () => {}
 
 Vue.use(VueProgressBar, {
   color: '#000000',

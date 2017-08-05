@@ -1,12 +1,12 @@
 <template>
-  <router-link :class="$style.root" :to="{ name: 'pokemon', params: { name: pokemon.name }}">
+  <router-link :class="$style.PokemonItem" :to="{ name: 'pokemon', params: { name: pokemon.name }}">
     {{ pokemon.name }}
   </router-link>
 </template>
 
 <script>
 export default {
-  name: 'PokedexListItem',
+  name: 'PokedexItem',
   props: {
     pokemon: Object
   }
@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style module>
-.root {}
+.PokemonItem {}
 </style>

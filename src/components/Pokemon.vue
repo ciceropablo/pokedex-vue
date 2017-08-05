@@ -1,24 +1,15 @@
 <template>
-  <div :class="$style.root">
-    <p>
-      <a @click.prevent="onClickBackButton" href="">back</a>
-    </p>
-    <table>
-      <tr>
-        <td><img :src="image" :alt="`${name} pokémon`" height="96"></td>
-        <td></td>
-      </tr>
-      <tr v-for="(value, key, index) in properties" :key="index">
-        <td>{{ key }}</td>
-        <td>{{ value }}</td>
-      </tr>
-    </table>
+  <div :class="$style.Pokemon">
+    <BackButton>back</BackButton>
+    <PokemonTable :data="data" />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapState, mapActions } from 'vuex'
 import store from '@/store'
+import BackButton from '@/components/BackButton'
+import PokemonTable from '@/components/PokemonTable'
 
 const beforeRoute = (to, from, next) => {
   const name = to.params.name
@@ -37,13 +28,16 @@ const beforeRoute = (to, from, next) => {
 
 export default {
   name: 'Pokemon',
+  components: {
+    BackButton,
+    PokemonTable
+  },
   computed: {
     ...mapState('route', {
       name: state => state.params.name
     }),
     ...mapGetters('Pokemon', {
-      properties: 'properties',
-      image: 'image'
+      data: 'data'
     })
   },
   beforeRouteEnter: beforeRoute,
@@ -51,14 +45,11 @@ export default {
   methods: {
     ...mapActions('Pokemon', {
       getPokemonByName: 'getPokemonByName'
-    }),
-    onClickBackButton () {
-      this.$router.go(-1)
-    }
+    })
   }
 }
 </script>
 
 <style module>
-.root {}
+.Pokemon {}
 </style>

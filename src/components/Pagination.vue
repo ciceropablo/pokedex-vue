@@ -1,10 +1,8 @@
 <template>
-  <div :class="$style.root">
-    <p>
-      <router-link :to="prev.to">{{ prev.label }}</router-link>
-      <span>&nbsp;{{ current }}/{{ total }}&nbsp;</span>
-      <router-link :to="next.to">{{ next.label }}</router-link>
-    </p>
+  <div :class="$style.Pagination">
+    <router-link :class="$style.Pagination__Button" :to="prev.to">{{ prev.label }}</router-link>
+    <span :class="$style.Pagination__Label">&nbsp;{{ current }}/{{ total }}&nbsp;</span>
+    <router-link :class="$style.Pagination__Button" :to="next.to">{{ next.label }}</router-link>
   </div>
 </template>
 
@@ -21,5 +19,9 @@ export default {
 </script>
 
 <style module>
-.root {}
+.Pagination {}
+
+.Pagination__Button {}
+
+.Pagination__Label {}
 </style>

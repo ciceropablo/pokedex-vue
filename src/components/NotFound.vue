@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.root">
-    <h2>page not found</h2>
+  <div :class="$style.NotFound">
+    <h2 :class="$style.NotFound__Heading">404 page not found</h2>
   </div>
 </template>
 
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style module>
-.root {}
+.NotFound {}
+
+.NotFound__Heading {}
 </style>

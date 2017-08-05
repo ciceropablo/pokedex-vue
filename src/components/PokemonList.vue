@@ -1,15 +1,13 @@
 <template>
-  <div :class="$style.root">
-    <transition-group name="slide-fade" tag="ul">
-      <li v-for="pokemon in pokemons" :key="pokemon.name">
-        <PokemonListItem :pokemon="pokemon" />
-      </li>
-    </transition-group>
-  </div>
+  <transition-group :class="$style.PokemonList" name="slide-fade" tag="ul">
+    <li :class="$style.PokemonList__Item" v-for="pokemon in pokemons" :key="pokemon.name">
+      <PokemonItem :pokemon="pokemon" />
+    </li>
+  </transition-group>
 </template>
 
 <script>
-import PokemonListItem from '@/components/PokemonListItem'
+import PokemonItem from '@/components/PokemonItem'
 
 export default {
   name: 'PokemonList',
@@ -17,11 +15,17 @@ export default {
     pokemons: Array
   },
   components: {
-    PokemonListItem
+    PokemonItem
   }
 }
 </script>
 
 <style module>
-.root {}
+.PokemonList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.PokemonList__Item {}
 </style>

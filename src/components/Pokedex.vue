@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.root">
+  <div :class="$style.Pokedex">
     <Pagination
       :prev="{ label: 'prev', to: { name: 'pokedex', params: { page: pagination.prev } } }"
       :next="{ label: 'next', to: { name: 'pokedex', params: { page: pagination.next } } }"
@@ -12,9 +12,9 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import store from '@/store'
 import PokemonList from '@/components/PokemonList'
 import Pagination from '@/components/Pagination'
-import store from '@/store'
 
 const beforeRoute = (to, from, next) => {
   const page = to.params.page
@@ -58,5 +58,5 @@ export default {
 </script>
 
 <style module>
-.root {}
+.Pokedex {}
 </style>

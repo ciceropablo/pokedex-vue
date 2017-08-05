@@ -5,24 +5,19 @@ export default {
   namespaced: true,
 
   getters: {
-    properties: state => {
+    data: state => {
       const propertyList = ('id,name,base_experience,height,is_default,order,weight').split(',')
-      return Object.entries(state.data)
+      const name = state.data.name
+      const image = state.data.sprites.front_default
+      const properties = Object.entries(state.data)
         .filter(([key, value]) => !!~propertyList.indexOf(key))
         .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {})
-    },
-
-    image: state => {
-      return state.data.sprites.front_default
+      return { name, image, properties }
     }
   },
 
   state: {
-    data: {
-      sprites: {
-        front_default: ''
-      }
-    }
+    data: {}
   },
 
   mutations: {
